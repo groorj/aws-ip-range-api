@@ -1,0 +1,39 @@
+# serverless.yml
+
+service: aws-ip-range-api # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: python3.6
+  stage: ${opt:stage,'prod'}
+  region: us-east-2
+  environment:
+    LOGGER_LEVEL: "DEBUG" # CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET
+    HTTP_TIMEOUT: 10
+    HTTP_API_CONNECTION_TIMEOUT: 5.0
+    HTTP_API_PROCESSING_TIMEOUT: 10.0
+
+custom:
+  stages:
+    - local
+    - prod
+
+functions:
+  # health
+  health-check:
+    handler: health/health.check
+    events:
+      - http: GET /health/check
+  # aws-ip-range-api
+  aws-ip-range-api:
+    handler: aws-ip-range.handler
+    events:
+      - http:
+          path: /aws-ip-range
+          method: get
+          cors: true
+
+plugins:
+  - serverless-python-requirements
+
+# End;
