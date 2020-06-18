@@ -9,9 +9,7 @@ provider:
   region: us-east-2
   environment:
     LOGGER_LEVEL: "DEBUG" # CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET
-    HTTP_TIMEOUT: 10
-    HTTP_API_CONNECTION_TIMEOUT: 5.0
-    HTTP_API_PROCESSING_TIMEOUT: 10.0
+    IP_RANGE_JSON_URL: "https://ip-ranges.amazonaws.com/ip-ranges.json"
 
 custom:
   stages:
@@ -21,7 +19,7 @@ custom:
 functions:
   # health
   health-check:
-    handler: health/health.check
+    handler: health.check
     events:
       - http: GET /health/check
   # aws-ip-range-api
@@ -29,11 +27,9 @@ functions:
     handler: aws-ip-range.handler
     events:
       - http:
-          path: /aws-ip-range
+          path: /aws-ip-range/{ip}
           method: get
           cors: true
 
 plugins:
   - serverless-python-requirements
-
-# End;
