@@ -22,3 +22,5 @@ var/
 # Others
 *.ignore
 __pycache__/
+package-lock.json
+package.json
