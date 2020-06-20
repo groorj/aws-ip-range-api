@@ -146,6 +146,7 @@ curl https://qe0fnc7qn7.execute-api.us-east-2.amazonaws.com/prod/127.0.0.1/servi
 {
   "service": "unknown"
 }
+```
 
 ## Clean up
 
