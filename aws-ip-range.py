@@ -35,14 +35,15 @@ def get_all_data(event, context):
     ip = event['pathParameters']['ip']
     logger.debug("IP: [%s]", ip)
     data = 'unknown'
+    http_code = 404
     ip_data = get_ip_range_json()
     prefixes = ip_data['prefixes']
     my_ip = ip_address(ip)
     for prefix in prefixes:
         if my_ip in ip_network(prefix['ip_prefix']):
             data = prefix
-            # break
-    return create_response(200, data, 'data')
+            http_code = 200
+    return create_response(http_code, data, 'data')
 
 # return region
 def get_region(event, context):
@@ -50,14 +51,15 @@ def get_region(event, context):
     ip = event['pathParameters']['ip']
     logger.debug("IP: [%s]", ip)
     region = 'unknown'
+    http_code = 404
     ip_data = get_ip_range_json()
     prefixes = ip_data['prefixes']
     my_ip = ip_address(ip)
     for prefix in prefixes:
         if my_ip in ip_network(prefix['ip_prefix']):
             region = prefix['region']
-            # break
-    return create_response(200, region, 'region')
+            http_code = 200
+    return create_response(http_code, region, 'region')
 
 # return service
 def get_service(event, context):
@@ -65,13 +67,14 @@ def get_service(event, context):
     ip = event['pathParameters']['ip']
     logger.debug("IP: [%s]", ip)
     service = 'unknown'
+    http_code = 404
     ip_data = get_ip_range_json()
     prefixes = ip_data['prefixes']
     my_ip = ip_address(ip)
     for prefix in prefixes:
         if my_ip in ip_network(prefix['ip_prefix']):
             service = prefix['service']
-            # break
-    return create_response(200, service, 'service')
+            http_code = 200
+    return create_response(http_code, service, 'service')
 
 # End;
