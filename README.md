@@ -5,7 +5,8 @@
 - [This project uses](https://github.com/groorj/aws-ip-range-api#this-project-uses)
 - [Where does the information comes from](https://github.com/groorj/aws-ip-range-api#where-does-the-information-comes-from)
 - [Get started](https://github.com/groorj/aws-ip-range-api#get-started)
-- [How to use it](https://github.com/groorj/aws-ip-range-api#how-to-use-it)
+- [Clean up](https://github.com/groorj/aws-ip-range-api#clean-up)
+- [Notes](https://github.com/groorj/aws-ip-range-api#notes)
 
 ## What does it do
 
