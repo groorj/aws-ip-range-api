@@ -22,12 +22,28 @@ functions:
     handler: health.check
     events:
       - http: GET /health/check
+  # get-all-data
+  get-all-data:
+    handler: aws-ip-range.get_all_data
+    events:
+      - http:
+          path: /{ip}
+          method: get
+          cors: true
   # get-region
   get-region:
     handler: aws-ip-range.get_region
     events:
       - http:
           path: /{ip}/region
+          method: get
+          cors: true
+  # get-service
+  get-service:
+    handler: aws-ip-range.get_service
+    events:
+      - http:
+          path: /{ip}/service
           method: get
           cors: true
 
