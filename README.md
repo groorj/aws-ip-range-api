@@ -5,6 +5,7 @@
 - [This project uses](https://github.com/groorj/aws-ip-range-api#this-project-uses)
 - [Where does the information comes from](https://github.com/groorj/aws-ip-range-api#where-does-the-information-comes-from)
 - [Get started](https://github.com/groorj/aws-ip-range-api#get-started)
+- [How to use it](https://github.com/groorj/aws-ip-range-api#how-to-use-it)
 
 ## What does it do
 
@@ -68,7 +69,7 @@ If the deployment is successful, you will see the API Gateway endpoints created:
   GET - https://qe0fnc7qn7.execute-api.us-east-2.amazonaws.com/prod/{ip}/service
 ```
 
-## Results
+## How to use it
 
 ### Get all avaliable information for a valid AWS IP address
 ```bash
