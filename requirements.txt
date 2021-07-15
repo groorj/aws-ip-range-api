@@ -1,2 +1,2 @@
 ipaddress==1.0.23
-urllib3==1.25.9
+urllib3

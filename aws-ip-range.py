@@ -3,6 +3,7 @@ import logging
 import os
 import inspect
 import urllib
+import urllib.request
 from ipaddress import ip_network, ip_address
 
 # logger
