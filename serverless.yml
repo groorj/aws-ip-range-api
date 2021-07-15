@@ -2,11 +2,14 @@
 
 service: aws-ip-range # NOTE: update this with your service name
 
+frameworkVersion: '2'
+
 provider:
   name: aws
-  runtime: python3.6
+  runtime: python3.8
   stage: ${opt:stage,'prod'}
   region: us-east-2
+  lambdaHashingVersion: 20201221
   environment:
     LOGGER_LEVEL: "DEBUG" # CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET
     IP_RANGE_JSON_URL: "https://ip-ranges.amazonaws.com/ip-ranges.json"
@@ -49,3 +52,4 @@ functions:
 
 plugins:
   - serverless-python-requirements
+  - serverless-offline
