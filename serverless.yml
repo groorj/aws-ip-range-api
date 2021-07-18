@@ -1,6 +1,6 @@
 # serverless.yml
 
-service: aws-ip-range # NOTE: update this with your service name
+service: aws-ip-range-api # NOTE: update this with your service name
 
 frameworkVersion: '2'
 
@@ -8,7 +8,7 @@ provider:
   name: aws
   runtime: python3.8
   stage: ${opt:stage,'prod'}
-  region: us-east-2
+  region: us-east-1
   lambdaHashingVersion: 20201221
   environment:
     LOGGER_LEVEL: "DEBUG" # CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET
