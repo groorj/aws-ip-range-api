@@ -13,6 +13,9 @@ provider:
   environment:
     LOGGER_LEVEL: "DEBUG" # CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET
     IP_RANGE_JSON_URL: "https://ip-ranges.amazonaws.com/ip-ranges.json"
+    RESTRICTED_ACCESS_ENABLED: False
+    RESTRICTED_ACCESS_HTTP_HEADER: "X-Restricted-Access"
+    RESTRICTED_ACCESS_SECRET: "Test1234"
 
 custom:
   stages:
