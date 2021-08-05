@@ -21,13 +21,14 @@ def validate_access(event, context):
         if os.environ['RESTRICTED_ACCESS_HTTP_HEADER'] in event["headers"]:
             logger.info("Value for header [%s] is: [%s]", os.environ['RESTRICTED_ACCESS_HTTP_HEADER'], event["headers"][os.environ['RESTRICTED_ACCESS_HTTP_HEADER']])
         else:
-            logger.info("RESTRICTED_ACCESS_ENABLED is enabled and HTTP header was not provider")
+            logger.error("RESTRICTED_ACCESS_ENABLED is enabled and HTTP header was not provider")
+            logger.debug("http headers: [%s]", event["headers"])
             http_code = 400
             error_message = "RESTRICTED_ACCESS_ENABLED is enabled. You must provide HTTP header for authentication."
             raise ValueError(http_code, error_message)
-            
+
         if event["headers"][os.environ['RESTRICTED_ACCESS_HTTP_HEADER']] != os.environ['RESTRICTED_ACCESS_SECRET']:
-            logger.info("Key provided is not valid")
+            logger.error("Key provided is not valid")
             logger.debug("Error: [%s]", error_message)
             http_code = 403
             raise ValueError(http_code, error_message)

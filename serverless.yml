@@ -13,8 +13,8 @@ provider:
   environment:
     LOGGER_LEVEL: "DEBUG" # CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET
     IP_RANGE_JSON_URL: "https://ip-ranges.amazonaws.com/ip-ranges.json"
-    RESTRICTED_ACCESS_ENABLED: False
-    RESTRICTED_ACCESS_HTTP_HEADER: "X-Restricted-Access"
+    RESTRICTED_ACCESS_ENABLED: True
+    RESTRICTED_ACCESS_HTTP_HEADER: "x-restricted-access"
     RESTRICTED_ACCESS_SECRET: "Test1234"
 
 custom:
@@ -35,7 +35,10 @@ functions:
       - http:
           path: /{ip}
           method: get
-          cors: true
+          cors:
+            origin: '*'
+            headers:
+              - X-Restricted-Access
   # get-region
   get-region:
     handler: aws-ip-range.get_region
@@ -43,7 +46,10 @@ functions:
       - http:
           path: /{ip}/region
           method: get
-          cors: true
+          cors:
+            origin: '*'
+            headers:
+              - X-Restricted-Access
   # get-service
   get-service:
     handler: aws-ip-range.get_service
@@ -51,7 +57,10 @@ functions:
       - http:
           path: /{ip}/service
           method: get
-          cors: true
+          cors:
+            origin: '*'
+            headers:
+              - X-Restricted-Access
 
 plugins:
   - serverless-python-requirements
